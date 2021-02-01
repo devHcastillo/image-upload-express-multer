@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const hbs = require("express-handlebars");
 const path = require("path");
+const { imageRouter } = require("./server/routes/router");
 
 app.use(express.json());
 
@@ -21,10 +22,7 @@ app.engine(
   })
 );
 
-//routes
-app.get("/", (req, res) => {
-  res.render("main");
-});
+app.use('/',imageRouter)
 
 app.listen(3000, () => {
   console.log("Listen in port 3000");
